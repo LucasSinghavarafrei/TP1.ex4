@@ -1,0 +1,104 @@
+package tp1.ex4;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author lsing
+ */
+public class TP1Ex4 {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        Client client = new Client(1, "Lucas", "lucas.singhavara@gmail.com");
+        
+        // 1. Initialisation des données de test
+        Magasin magasin = new Magasin();
+        magasin.ajouterProduit(new Produit(1, "Fender", 2000.0, 34));
+        magasin.ajouterProduit(new Produit(2, "Gibson", 15000.0, 5));
+        magasin.ajouterProduit(new Produit(3, "Squier", 250.0, 30));
+        magasin.ajouterProduit(new Produit(4, "Shiver", 130.0, 46));
+
+        Panier panier = new Panier();
+
+        int choix = 0;
+        int idCommandeCompteur = 1;
+
+        // 2. Boucle du menu interactif
+        while (choix != 5) {
+            System.out.println("\n--- Menu Magasin de Guitare ---");
+            System.out.println("1. Afficher les produits disponibles");
+            System.out.println("2. Ajouter un produit au panier");
+            System.out.println("3. Afficher le panier");
+            System.out.println("4. Passer la commande");
+            System.out.println("5. Quitter");
+            System.out.print("Votre choix : ");
+            
+            if (!scanner.hasNextInt()) {
+                System.out.println("Veuillez entrer un nombre valide.");
+                scanner.nextLine(); // Vide l'entrée incorrecte
+                continue;
+            }
+
+            choix = scanner.nextInt();
+            scanner.nextLine(); // Consomme le retour à la ligne indispensable pour le choix 2
+
+            if (choix < 1 || choix > 5) {
+                System.out.println("Veuillez entrer un nombre entre 1 et 5.");
+                continue;
+            }
+
+            switch (choix) {
+                case 1:
+                    magasin.afficherProduitsDisponibles();
+                    break;
+
+                case 2:
+                    System.out.print("Entrez le nom du produit a ajouter : ");
+                    // .trim() permet d'ignorer les espaces tapés par erreur (ex: " Fender ")
+                    String nomProduit = scanner.nextLine().trim(); 
+                    Produit produitTrouve = magasin.trouverProduitParNom(nomProduit);
+
+                    if (produitTrouve != null) {
+                        panier.ajouterProduit(produitTrouve);
+                        System.out.println("Produit « " + produitTrouve.getNom() + " » ajoute au panier avec succes !");
+                    } else {
+                        System.out.println("Erreur : Produit « " + nomProduit + " » introuvable dans le magasin.");
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("\n--- Contenu du panier ---");
+                    if (panier.getProduits().isEmpty()) {
+                        System.out.println("Le panier est vide.");
+                    } else {
+                        for (Produit p : panier.getProduits()) {
+                            System.out.println("- " + p);
+                        }
+                        System.out.println("Total actuel : " + panier.calculerTotal() + " euros");
+                    }
+                    break;
+
+                case 4:
+                    if (panier.getProduits().isEmpty()) {
+                        System.out.println("Impossible de passer commande : le panier est vide.");
+                    } else {
+                        Commande commande = new Commande(idCommandeCompteur++, client, panier);
+                        System.out.println("\n--- Commande confirmee ---");
+                        commande.afficherDetailsCommande();
+                        
+                        // Réinitialiser le panier pour le prochain client/achat
+                        panier = new Panier();
+                    }
+                    break;
+
+                case 5:
+                    System.out.println("Au revoir !");
+                    break;
+            }
+        }
+        
+        scanner.close();
+    }
+}
