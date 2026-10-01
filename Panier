@@ -1,0 +1,43 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package tp1.ex4;
+
+/**
+ *
+ * @author lsing
+ */
+
+import java.util.List;
+import java.util.ArrayList;
+
+public class Panier {
+    private List<Produit> produits;
+
+    public Panier() {
+        this.produits = new ArrayList<>();
+    }
+    
+    public List<Produit> getProduits() {
+        return this.produits;
+    }
+    
+    public void ajouterProduit(Produit produit){
+        this.produits.add(produit);
+    }
+    
+    public void supprimerProduit(Produit produit){
+        this.produits.remove(produit);
+    }
+    
+    public double calculerTotal() {
+        double total = 0.0;
+
+        for (Produit produit : this.produits) {
+            total += produit.getPrix(); 
+        }
+
+        return total;
+    }
+}
