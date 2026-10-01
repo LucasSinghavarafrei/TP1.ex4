@@ -1,0 +1,72 @@
+run:
+
+--- Menu Magasin de Guitare ---
+1. Afficher les produits disponibles
+2. Ajouter un produit au panier
+3. Afficher le panier
+4. Passer la commande
+5. Quitter
+Votre choix : 1
+
+--- Produits disponibles ---
+- Fender - 2000.0 euros
+- Gibson - 15000.0 euros
+- Squier - 250.0 euros
+- Shiver - 130.0 euros
+
+--- Menu Magasin de Guitare ---
+1. Afficher les produits disponibles
+2. Ajouter un produit au panier
+3. Afficher le panier
+4. Passer la commande
+5. Quitter
+Votre choix : 2
+Entrez le nom du produit a ajouter : Fender
+Produit � Fender � ajoute au panier avec succes !
+
+--- Menu Magasin de Guitare ---
+1. Afficher les produits disponibles
+2. Ajouter un produit au panier
+3. Afficher le panier
+4. Passer la commande
+5. Quitter
+Votre choix : 2
+Entrez le nom du produit a ajouter : Gibson
+Produit � Gibson � ajoute au panier avec succes !
+
+--- Menu Magasin de Guitare ---
+1. Afficher les produits disponibles
+2. Ajouter un produit au panier
+3. Afficher le panier
+4. Passer la commande
+5. Quitter
+Votre choix : 3
+
+--- Contenu du panier ---
+- Fender - 2000.0 euros
+- Gibson - 15000.0 euros
+Total actuel : 17000.0 euros
+
+--- Menu Magasin de Guitare ---
+1. Afficher les produits disponibles
+2. Ajouter un produit au panier
+3. Afficher le panier
+4. Passer la commande
+5. Quitter
+Votre choix : 4
+
+--- Commande confirmee ---
+id commande : 1
+nom client : Lucas (lucas.singhavara@gmail.com)
+produits : [Fender - 2000.0 euros, Gibson - 15000.0 euros]
+prix total : 17000.0 euros
+
+--- Menu Magasin de Guitare ---
+1. Afficher les produits disponibles
+2. Ajouter un produit au panier
+3. Afficher le panier
+4. Passer la commande
+5. Quitter
+Votre choix : 5
+Au revoir !
+BUILD SUCCESSFUL (total time: 31 seconds)
