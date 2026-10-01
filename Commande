@@ -1,0 +1,34 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package tp1.ex4;
+
+import java.util.List;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author lsing
+ */
+public class Commande {
+
+    private int idCommande;
+    private Client client;
+    private List<Produit> produitsCommandes;
+    private double total;
+
+    public Commande(int idCommande, Client client, Panier panier) {
+        this.idCommande = idCommande;
+        this.client = client;
+        this.produitsCommandes = new ArrayList<>(panier.getProduits());
+        this.total = panier.calculerTotal();
+    }
+    
+    public void afficherDetailsCommande(){
+        System.out.println("id commande : " + this.idCommande);
+        System.out.println("nom client : " + this.client);
+        System.out.println("produits : " + this.produitsCommandes);
+        System.out.println("prix total : " + this.total + " euros"); 
+    }
+}
